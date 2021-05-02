@@ -24,17 +24,6 @@ router.get("/", memeController.getMemes);
 //   res.send({ status: "ok", data: req.params.id });
 // });
 
-// /**
-//  * @route POST api/memes
-//  * @description Post a body to server
-//  * @access Public
-//  */
-
-//  router.post("/", function (req, res, next) {
-//   const requestData = req.body;
-//   res.send({ status: "ok", data: requestData });
-// });
-
 /**
  * @route POST api/memes
  * @description Upload an image to server
