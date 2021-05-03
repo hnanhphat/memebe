@@ -1,3 +1,1 @@
-{
-  "memes": []
-}
+{"memes":[{"texts":[{"id":"text_top","content":"Me after holiday","color":"WHITE","size":32,"alignmentX":"HORIZONTAL_ALIGN_CENTER","alignmentY":"VERTICAL_ALIGN_TOP"},{"id":"text_bottom","content":"","color":"BLACK","size":32,"alignmentX":"HORIZONTAL_ALIGN_CENTER","alignmentY":"VERTICAL_ALIGN_BOTTOM"}],"id":1620009372393,"originalImage":"1620009372091-cat.jpeg","originalImagePath":"public/images/1620009372091-cat.jpeg","outputMemePath":"public/images/MEME_1620009372393.jpeg","createdAt":1620009372568,"updatedAt":1620009381587}]}

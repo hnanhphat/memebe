@@ -13,17 +13,6 @@ const memeController = require("../controllers/meme.controller");
 
 router.get("/", memeController.getMemes);
 
-// /**
-//  * @route GET api/memes/:id
-//  * @description Get all memes
-//  * @access Public
-//  */
-
-// router.get("/:id", function (req, res, next) {
-//   // res.json({ status: "ok", data: "Get all memes" });
-//   res.send({ status: "ok", data: req.params.id });
-// });
-
 /**
  * @route POST api/memes
  * @description Upload an image to server
@@ -44,5 +33,13 @@ router.post(
  */
 
 router.get("/images", memeController.getOriginalImages);
+
+/**
+ * @route PUT api/memes/:id
+ * @description Update text on the meme
+ * @access Public
+ */
+
+router.put("/:id", memeController.updateMeme);
 
 module.exports = router;
