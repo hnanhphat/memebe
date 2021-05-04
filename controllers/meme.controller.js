@@ -62,6 +62,24 @@ const getMemes = (req, res, next) => {
   }
 };
 
+const singleMeme = async (req, res, next) => {
+  try {
+    const memeId = parseInt(req.params.id);
+
+    // Read data from the json file
+    let rawData = fs.readFileSync("meme.json");
+    let memes = JSON.parse(rawData).memes;
+    const index = memes.findIndex((meme) => meme.id === memeId);
+
+    if (index === -1) return next(new Error("Meme not found"));
+
+    const meme = memes[index];
+    res.json({ meme });
+  } catch (err) {
+    next(err);
+  }
+};
+
 const getOriginalImages = (req, res, next) => {
   try {
     const page = req.query.page || 1;
@@ -123,9 +141,38 @@ const updateMeme = async (req, res, next) => {
   }
 };
 
+const deleteMeme = async (req, res, next) => {
+  try {
+    const memeId = parseInt(req.params.id);
+
+    // Read data from the json file
+    let rawData = fs.readFileSync("meme.json");
+    let memes = JSON.parse(rawData).memes;
+    const index = memes.findIndex((meme) => meme.id === memeId);
+
+    if (index === -1) return next(new Error("Meme not found"));
+
+    const meme = memes[index];
+    try {
+      fs.unlinkSync(meme.originalImagePath);
+      fs.unlinkSync(meme.outputMemePath);
+    } catch (err) {
+      next(err);
+    }
+
+    memes.splice(index, 1);
+    fs.writeFileSync("meme.json", JSON.stringify({ memes }));
+    res.status(201).json(memes);
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   createMeme,
   getMemes,
+  singleMeme,
   getOriginalImages,
   updateMeme,
+  deleteMeme,
 };
